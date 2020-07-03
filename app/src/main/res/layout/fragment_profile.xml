@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ProfileFragment"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_margin="20dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/profile_icon"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/my_profile" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:textSize="20sp"
+        android:textColor="#000"
+        android:gravity="center_horizontal"
+        android:text="@string/name"
+        style="@style/login_style"
+        android:background="#fff" />
+
+    <TextView
+        android:id="@+id/profile_mobile"
+        android:textSize="18sp"
+        android:textColor="#000"
+        android:gravity="center_horizontal"
+        android:text="@string/mobile_number"
+        style="@style/login_style"
+        android:background="#fff" />
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:textSize="18sp"
+        android:textColor="#000"
+        android:gravity="center_horizontal"
+        android:text="@string/email_address"
+        style="@style/login_style"
+        android:background="#fff" />
+
+    <TextView
+        android:id="@+id/profile_address"
+        android:textSize="18sp"
+        android:textColor="#000"
+        android:gravity="center_horizontal"
+        android:text="@string/delivery_address"
+        style="@style/login_style"
+        android:background="#fff" />
+
+</LinearLayout>

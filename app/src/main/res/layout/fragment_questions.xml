@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.QuestionsFragment">
+
+    <TextView
+        style="@style/questions"
+        android:id="@+id/faqs_q1"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        style="@style/answers"
+        android:id="@+id/faqs_a1"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        style="@style/questions"
+        android:id="@+id/faqs_q2"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        style="@style/answers"
+        android:id="@+id/faqs_a2"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        style="@style/questions"
+        android:id="@+id/faqs_q3"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        style="@style/answers"
+        android:id="@+id/faqs_a3"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        style="@style/questions"
+        android:id="@+id/faqs_q4"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        style="@style/answers"
+        android:id="@+id/faqs_a4"
+        android:text="@string/hello_blank_fragment" />
+
+</LinearLayout>

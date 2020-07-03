@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/food_login_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/food_app_icon"
+        android:contentDescription="@string/app_name" />
+
+    <EditText
+        android:id="@+id/food_login_username"
+        style="@style/login_style"
+        android:drawableLeft="@drawable/ic_mobile"
+        android:layout_below="@id/food_login_image"
+        android:hint="@string/mobile_number"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:background="#fff"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/food_login_password"
+        style="@style/login_style"
+        android:drawableLeft="@drawable/ic_password"
+        android:layout_below="@id/food_login_username"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:background="#fff"
+        android:importantForAutofill="no" />
+
+    <Button
+        android:id="@+id/food_login_btn"
+        style="@style/login_style"
+        android:layout_below="@id/food_login_password"
+        android:background="@color/colorExtras"
+        android:text="@string/log_in"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/food_login_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/food_login_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:padding="6dp"
+        android:text="@string/forgot_password"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/food_login_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:padding="6dp"
+        android:text="@string/sign_up"
+        android:textSize="16sp"/>
+
+</RelativeLayout>

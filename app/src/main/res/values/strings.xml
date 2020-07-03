@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">FoodHub</string>
+    <string name="mobile_number">Mobile Number(10 digits)</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_up">Don\'t have an account? Sign up now</string>
+    <string name="home">Home</string>
+    <string name="my_profile">My Profile</string>
+    <string name="favorite_restaurants">Favorite Restaurants</string>
+    <string name="order_history">Order History</string>
+    <string name="faqs">FAQs</string>
+    <string name="log_out">Log Out</string>
+    <string name="username">Jon Snow</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+
+    <string name="preference_file_name">Foodhub Preferences</string>
+    <string name="preference_login">Login Preference</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="book_image">Book Image</string>
+    <string name="name">Name(Min. 3 characters)</string>
+    <string name="email_address">Email Address</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="password_registration">Password(Min. 4 characters)</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="list_menu">Choose from menu listed below</string>
+    <string name="choose_menu_list">Choose from menu listed below:</string>
+</resources>
