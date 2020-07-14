@@ -19,19 +19,21 @@ import com.aniketsingh.foodhub.database.RestaurantEntity
 import com.aniketsingh.foodhub.model.Restaurant
 import com.squareup.picasso.Picasso
 
-class HomeRecyclerAdapter(val context: Context, val itemList: ArrayList<Restaurant>) : RecyclerView.Adapter<HomeRecyclerAdapter.HomeViewHolder>() {
+class HomeRecyclerAdapter(val context: Context, val itemList: ArrayList<Restaurant>) :
+    RecyclerView.Adapter<HomeRecyclerAdapter.HomeViewHolder>() {
 
-    class HomeViewHolder(view : View) : RecyclerView.ViewHolder(view){
-        val imgFoodIcon : ImageView = view.findViewById(R.id.recycler_img_food_icon)
-        val txtRestaurant : TextView = view.findViewById(R.id.recyclerview_restaurant)
-        val txtPrice : TextView = view.findViewById(R.id.recyclerview_price)
-        val txtRating : TextView = view.findViewById(R.id.recyclerview_rating)
-        val llcontent : LinearLayout = view.findViewById(R.id.recyclerview_llcontent)
-        val imgFavIcon : ImageView = view.findViewById(R.id.recyclerview_img_favorites)
+    class HomeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val imgFoodIcon: ImageView = view.findViewById(R.id.recycler_img_food_icon)
+        val txtRestaurant: TextView = view.findViewById(R.id.recyclerview_restaurant)
+        val txtPrice: TextView = view.findViewById(R.id.recyclerview_price)
+        val txtRating: TextView = view.findViewById(R.id.recyclerview_rating)
+        val llcontent: LinearLayout = view.findViewById(R.id.recyclerview_llcontent)
+        val imgFavIcon: ImageView = view.findViewById(R.id.recyclerview_img_favorites)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_home_single_row, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recyclerview_home_single_row, parent, false)
         return HomeViewHolder(view)
     }
 
@@ -64,26 +66,35 @@ class HomeRecyclerAdapter(val context: Context, val itemList: ArrayList<Restaura
             item.resImage
         )
 
+        val checkDatabase = DBAsyncTask(context, restaurantEntity, 1).execute().get()
+        if (checkDatabase) {
+            holder.imgFavIcon.setImageResource(R.drawable.ic_fav_solid)
+        } else {
+            holder.imgFavIcon.setImageResource(R.drawable.ic_fav_border)
+        }
+
         holder.imgFavIcon.setOnClickListener {
 
-            if (!DBAsyncTask(context, restaurantEntity, 1).execute().get()){
+            if (!checkDatabase) {
                 val async = DBAsyncTask(context, restaurantEntity, 2).execute()
                 val result = async.get()
 
-                if (result){
-                    Toast.makeText(context, "Restaurant added to favorites", Toast.LENGTH_SHORT).show()
+                if (result) {
+                    Toast.makeText(context, "Restaurant added to favorites", Toast.LENGTH_SHORT)
+                        .show()
                     holder.imgFavIcon.setImageResource(R.drawable.ic_fav_solid)
-                }else{
+                } else {
                     Toast.makeText(context, "Some error occurred!!!", Toast.LENGTH_SHORT).show()
                 }
-            }else{
+            } else {
                 val async = DBAsyncTask(context, restaurantEntity, 3).execute()
                 val result = async.get()
 
-                if (result){
-                    Toast.makeText(context, "Restaurant removed from favorites", Toast.LENGTH_SHORT).show()
+                if (result) {
+                    Toast.makeText(context, "Restaurant removed from favorites", Toast.LENGTH_SHORT)
+                        .show()
                     holder.imgFavIcon.setImageResource(R.drawable.ic_fav_border)
-                }else{
+                } else {
                     Toast.makeText(context, "Some error occurred!!!", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -92,7 +103,8 @@ class HomeRecyclerAdapter(val context: Context, val itemList: ArrayList<Restaura
 
     }
 
-    class DBAsyncTask(val context: Context, val restaurantEntity: RestaurantEntity, val mode: Int) : AsyncTask<Void, Void, Boolean>(){
+    class DBAsyncTask(val context: Context, val restaurantEntity: RestaurantEntity, val mode: Int) :
+        AsyncTask<Void, Void, Boolean>() {
 
         /*
         mode 1 -> check db if restaurant is added to favorite or not
@@ -100,10 +112,11 @@ class HomeRecyclerAdapter(val context: Context, val itemList: ArrayList<Restaura
         mode 3 -> delete restaurant from favorite
         */
 
-        val db: RestaurantDatabase = Room.databaseBuilder(context, RestaurantDatabase::class.java, "res-db").build()
+        val db: RestaurantDatabase =
+            Room.databaseBuilder(context, RestaurantDatabase::class.java, "res-db").build()
 
         override fun doInBackground(vararg params: Void?): Boolean {
-            when(mode){
+            when (mode) {
 
                 1 -> {
                     val restaurant: RestaurantEntity? = db.restaurantDao().getRestaurantById(

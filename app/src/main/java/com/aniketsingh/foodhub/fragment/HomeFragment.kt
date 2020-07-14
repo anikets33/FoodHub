@@ -36,15 +36,11 @@ class HomeFragment : Fragment() {
     lateinit var progressLayout: RelativeLayout
     lateinit var progressBar: ProgressBar
 
-//    var ratingComparator = Comparator<Restaurant>{res1, res2 ->
-//        res1.resRating.compareTo(res2.resRating, true)
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
 
         setHasOptionsMenu(true)
@@ -101,9 +97,7 @@ class HomeFragment : Fragment() {
 
                 }
                 , Response.ErrorListener {
-                    if (activity != null) {
-                        Toast.makeText(activity, "Volley error occurred", Toast.LENGTH_SHORT).show()
-                    }
+                    Toast.makeText(activity, "Volley error occurred", Toast.LENGTH_SHORT).show()
                 }){
                 override fun getHeaders(): MutableMap<String, String> {
                     val headers = HashMap<String, String>()
@@ -136,21 +130,5 @@ class HomeFragment : Fragment() {
 
         return view
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.menu_drawer, menu)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val id = item.itemId
-//        if(id == R.id.action_sort) {
-//            Collections.sort(resList, ratingComparator)
-//            resList.reverse()
-//        }
-//
-//        recyclerAdapter.notifyDataSetChanged()
-//
-//        return super.onOptionsItemSelected(item)
-//    }
 
 }

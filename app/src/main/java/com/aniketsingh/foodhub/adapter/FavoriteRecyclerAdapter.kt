@@ -28,7 +28,7 @@ class FavoriteRecyclerAdapter(val context: Context, val itemList: List<Restauran
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_home_single_row, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_fav_single_row, parent, false)
         return FavoriteViewHolder(view)
     }
 
@@ -61,9 +61,16 @@ class FavoriteRecyclerAdapter(val context: Context, val itemList: List<Restauran
             item.imageUrl
         )
 
+        val checkDatabase = HomeRecyclerAdapter.DBAsyncTask(context, restaurantEntity, 1).execute().get()
+        if(checkDatabase){
+            holder.imgFavIcon.setImageResource(R.drawable.ic_fav_solid)
+        }else{
+            holder.imgFavIcon.setImageResource(R.drawable.ic_fav_border)
+        }
+
         holder.imgFavIcon.setOnClickListener {
 
-            if (!HomeRecyclerAdapter.DBAsyncTask(context, restaurantEntity, 1).execute().get()){
+            if (!checkDatabase){
                 val async = HomeRecyclerAdapter.DBAsyncTask(context, restaurantEntity, 2).execute()
                 val result = async.get()
 

@@ -47,6 +47,9 @@ class FavoritesFragment : Fragment() {
         if (activity != null){
             progressLayout.visibility = View.GONE
             recyclerAdapter = FavoriteRecyclerAdapter(activity as Context, dbRestaurantList)
+
+            recyclerView.layoutManager = layoutManager
+            recyclerView.adapter = recyclerAdapter
         }
 
         return view

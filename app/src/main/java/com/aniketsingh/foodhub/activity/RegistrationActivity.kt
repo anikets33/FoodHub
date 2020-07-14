@@ -112,14 +112,10 @@ class RegistrationActivity : AppCompatActivity() {
         jsonParams.put("address", address)
         jsonParams.put("email", email)
 
-        //Log.d("json", jsonParams.toString())
-
         if(ConnectionManager().checkConnectivity(this)){
             val jsonRequest = object : JsonObjectRequest(Method.POST, url, jsonParams, Response.Listener {
 
                 try {
-
-                    //Log.d("responsejson", it.toString())
 
                     val resData = it.getJSONObject("data")
                     val success = resData.getBoolean("success")
@@ -133,8 +129,6 @@ class RegistrationActivity : AppCompatActivity() {
                         editor.putString("email", data.getString("email")).apply()
                         editor.putString("mobile_number", data.getString("mobile_number")).apply()
                         editor.putString("address", data.getString("address")).apply()
-
-                        //Log.d("editor response", editor.toString())
 
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
@@ -13,16 +14,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
+        <ImageView
             android:id="@+id/recycler_serial"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="1"
-            android:textAlignment="center"
-            android:textSize="16sp" />
+            android:src="@drawable/ic_arrow"
+            tools:ignore="ContentDescription" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
-                android:text="Food Item"
+                android:text="@string/food_item"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
-                android:text="Price/Person"
+                android:text="@string/price_person"
                 android:layout_marginBottom="5dp"
                 android:textSize="16sp" />
 
@@ -60,7 +60,7 @@
             android:layout_margin="10dp"
             android:layout_weight="4"
             android:background="@color/colorExtras"
-            android:text="ADD"
+            android:text="@string/add"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold" />

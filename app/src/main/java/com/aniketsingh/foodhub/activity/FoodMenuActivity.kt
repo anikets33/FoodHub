@@ -19,6 +19,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley.newRequestQueue
 import com.aniketsingh.foodhub.R
 import com.aniketsingh.foodhub.adapter.FoodMenuRecyclerAdapter
+import com.aniketsingh.foodhub.database.OrderEntity
 import com.aniketsingh.foodhub.fragment.HomeFragment
 import com.aniketsingh.foodhub.model.FoodItem
 import com.aniketsingh.foodhub.util.ConnectionManager
@@ -144,6 +145,11 @@ class FoodMenuActivity : AppCompatActivity() {
         supportActionBar?.title = name
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onBackPressed() {
+        CartActivity.DeleteOrder(this).execute().get()
+        super.onBackPressed()
     }
 
 }

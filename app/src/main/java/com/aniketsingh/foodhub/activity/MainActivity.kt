@@ -16,7 +16,9 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.room.Room
 import com.aniketsingh.foodhub.R
+import com.aniketsingh.foodhub.database.RestaurantDatabase
 import com.aniketsingh.foodhub.fragment.FavoritesFragment
 import com.aniketsingh.foodhub.fragment.HomeFragment
 import com.aniketsingh.foodhub.fragment.ProfileFragment
@@ -166,6 +168,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openHome() {
+
+        CartActivity.DeleteOrder(this).execute().get()
+
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.frame_layout,

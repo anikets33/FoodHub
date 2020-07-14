@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
@@ -12,10 +13,13 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.room.Room
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.aniketsingh.foodhub.R
+import com.aniketsingh.foodhub.database.RestaurantDatabase
+import com.aniketsingh.foodhub.database.RestaurantEntity
 import com.aniketsingh.foodhub.util.ConnectionManager
 import org.json.JSONObject
 import java.lang.Exception
@@ -32,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var tvRegister : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
         loginSharedPreferences = getSharedPreferences(getString(R.string.preference_login), Context.MODE_PRIVATE)
@@ -62,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Invalid Login Details", Toast.LENGTH_LONG).show()
             }else{
                 savePreferences()
+                DeleteFavorites(this).execute().get()
                 sendCredentials(mobileNumber, password)
             }
 
@@ -69,6 +75,11 @@ class LoginActivity : AppCompatActivity() {
 
         tvRegister.setOnClickListener {
             val intent = Intent(this, RegistrationActivity::class.java)
+            startActivity(intent)
+        }
+
+        tvForgotPassword.setOnClickListener {
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
 
@@ -153,5 +164,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         finish()
+    }
+
+    class DeleteFavorites(val context: Context) : AsyncTask<Void, Void, Void>(){
+        override fun doInBackground(vararg params: Void?): Void? {
+            val db = Room.databaseBuilder(context, RestaurantDatabase::class.java, "res-db").build()
+            db.restaurantDao().deleteAll()
+            return null
+        }
     }
 }

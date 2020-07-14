@@ -14,6 +14,9 @@ interface RestaurantDao {
     @Delete
     fun deleteRestaurant(restaurantEntity: RestaurantEntity)
 
+    @Query("DELETE FROM restaurants")
+    fun deleteAll()
+
     @Query("SELECT * FROM restaurants")
     fun getAllRestaurants(): List<RestaurantEntity>
 
